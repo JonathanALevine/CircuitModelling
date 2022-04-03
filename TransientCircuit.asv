@@ -1,0 +1,43 @@
+close all;  
+clear; %intialization
+
+set(0,'DefaultFigureWindowStyle','docked')
+
+% Circuit Parameters
+% R3 was determined from assignment 3 simulation
+global R1 R2 R3 R4 R0 L c a;
+R1 = 1;
+R2 = 2;
+R3 = 23.0821;
+R4 = 0.1;
+R0 = 1000;
+L = 0.2;
+c = 0.25;
+a = 100;
+
+G = GetGMatrix();
+C = GetCMatrix();
+F = zeros(8, 1);
+
+h = 0.03e-6;
+number_of_points = 1000;
+t = linspace(0, 1, number_of_points);
+
+% Initial guess
+V = [0; 0; 0];
+
+for n = 1:number_of_points
+    step(n) = st(t(n));
+end
+
+for n = 1:number_of_points-1
+    left_side = G + 1/h*C;
+    right_side = 1/h*C*V + b;
+    V = left_side\right_side;
+    
+    Vout(n) = V(2);
+    
+    G = sparse(n_node, n_node);
+    b = sparse(n_node, 1);
+    C = sparse(n_node, n_node);
+end
