@@ -16,6 +16,8 @@ c = 0.25;
 a = 100;
 Cn = 0.00001;
 
+save_plots = 1;
+
 G = GetGMatrix();
 C = GetCMatrix(Cn);
 
@@ -77,5 +79,10 @@ xlabel('Frequency (Hz)');
 ylabel('Signal (V)');
 title('Response in Frequency Domain');
 legend('V_{in}', 'V_0');
+
+if save_plots
+    FN2 = 'Figures/CircuitWithNoise';   
+    print(gcf, '-dpng', '-r600', FN2);  %Save graph in PNG
+end
 
 

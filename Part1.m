@@ -15,6 +15,8 @@ L = 0.2;
 c = 0.25;
 a = 100;
 
+save_plots = 1;
+
 G = GetGMatrix();
 C = GetCMatrix(0);
 F = zeros(8, 1);
@@ -39,6 +41,11 @@ xlabel('V_{in} (V)');
 ylabel('Signal (V)');
 legend('V_3', 'V_0');
 
+if save_plots
+    FN2 = 'Figures/Programing_i';   
+    print(gcf, '-dpng', '-r600', FN2);  %Save graph in PNG
+end
+
 % Programing (ii)
 figure('name', 'Programing (ii)');
 F(7, 1) = 1;
@@ -61,6 +68,11 @@ semilogx(omega, 20*log10(Vout))
 xlabel('\omega (rad/s)');
 ylabel('V_0/V_1 (dB)');
 title('dB Gain vs. \omega')
+
+if save_plots
+    FN2 = 'Figures/Programing_ii';   
+    print(gcf, '-dpng', '-r600', FN2);  %Save graph in PNG
+end
 
 % Programing (iii)
 figure('name', 'Programing (iii)');
@@ -91,5 +103,10 @@ subplot(1, 2, 2)
 histogram(Vout/F(7, 1), 50);
 xlabel('V_0/V_{in}');
 ylabel('Count');
+
+if save_plots
+    FN2 = 'Figures/Programing_iii';   
+    print(gcf, '-dpng', '-r600', FN2);  %Save graph in PNG
+end
 
 

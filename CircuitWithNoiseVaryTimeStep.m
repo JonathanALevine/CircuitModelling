@@ -17,6 +17,8 @@ a = 100;
 Cn = 0.00001;
 number_of_points = [100; 1000; 10000];
 
+save_plots = 1;
+
 figure('name', 'Circuit With Noise')
 for simulation=1:length(number_of_points)
     G = GetGMatrix();
@@ -62,5 +64,10 @@ for simulation=1:length(number_of_points)
     ylabel('Signal (V)');
     title(['Time Step = ', num2str(h), ' s']);
     legend('V_{in}', 'V_0');
+end
+
+if save_plots
+    FN2 = 'Figures/CircuitWithNoiseVaryTimeStep';   
+    print(gcf, '-dpng', '-r600', FN2);  %Save graph in PNG
 end
 

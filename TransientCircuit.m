@@ -19,6 +19,8 @@ G = GetGMatrix();
 C = GetCMatrix(0);
 F = zeros(8, 1);
 
+save_plots = 1;
+
 number_of_points = 1000;
 start_time = 0;
 end_time = 1;
@@ -138,6 +140,11 @@ ylabel('Signal (V)');
 legend('V_{in}', 'V_0');
 title('Gaussian Pulse')
 
+if save_plots
+    FN2 = 'Figures/Time_Domain';   
+    print(gcf, '-dpng', '-r600', FN2);  %Save graph in PNG
+end
+
 figure('name', 'Frequency Domain');
 subplot(3, 1, 1)
 plot(freq, abs(Vin_step_ffts))
@@ -168,4 +175,9 @@ xlabel('Frequency (Hz)');
 ylabel('Signal (V)');
 title('Gaussian Pulse');
 legend('V_{in}', 'V_0');
+
+if save_plots
+    FN2 = 'Figures/Frequency_Domain';   
+    print(gcf, '-dpng', '-r600', FN2);  %Save graph in PNG
+end
 

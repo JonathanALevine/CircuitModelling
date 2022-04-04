@@ -16,6 +16,8 @@ c = 0.25;
 a = 100;
 Cn = [0.000001; 0.00001; 0.0001; 0.001];
 
+save_plots = 1;
+
 figure('name', 'Circuit With Noise')
 for simulation=1:length(Cn)
     G = GetGMatrix();
@@ -53,7 +55,7 @@ for simulation=1:length(Cn)
         Vout(n) = V(5);
     end
 
-    subplot(4, 1, simulation)
+    subplot(length(Cn), 1, simulation)
     plot(t, gaussian_signal)
     hold on 
     plot(t, Vout)
@@ -62,5 +64,10 @@ for simulation=1:length(Cn)
     ylabel('Signal (V)');
     title(['Cn = ', num2str(Cn(simulation)), ' F']);
     legend('V_{in}', 'V_0');
+end
+
+if save_plots
+    FN2 = 'Figures/CircuitWithNoiseVaryCn';   
+    print(gcf, '-dpng', '-r600', FN2);  %Save graph in PNG
 end
 
