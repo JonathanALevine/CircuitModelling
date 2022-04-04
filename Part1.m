@@ -16,7 +16,7 @@ c = 0.25;
 a = 100;
 
 G = GetGMatrix();
-C = GetCMatrix();
+C = GetCMatrix(0);
 F = zeros(8, 1);
 
 % Programing (i)
@@ -85,11 +85,11 @@ end
 subplot(1, 2, 1)
 histogram(c_val, 50);
 xlabel('C Val');
-ylabel('Number');
+ylabel('Count');
 
 subplot(1, 2, 2)
 histogram(Vout/F(7, 1), 50);
 xlabel('V_0/V_{in}');
-ylabel('Number');
+ylabel('Count');
 
 

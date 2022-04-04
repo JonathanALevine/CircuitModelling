@@ -78,4 +78,3 @@ ylabel('Signal (V)');
 title('Response in Frequency Domain');
 legend('V_{in}', 'V_0');
 
-

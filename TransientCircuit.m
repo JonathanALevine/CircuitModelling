@@ -16,7 +16,7 @@ c = 0.25;
 a = 100;
 
 G = GetGMatrix();
-C = GetCMatrix();
+C = GetCMatrix(0);
 F = zeros(8, 1);
 
 number_of_points = 1000;

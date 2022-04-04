@@ -1,5 +1,5 @@
 function C = GetCMatrix(Cn)
-    global c L Cn;
+    global c L;
 
     C = zeros(8, 8);
 
