@@ -36,7 +36,7 @@ hold on
 plot(-10:1:10, Vout)
 hold off;
 xlabel('V_{in} (V)');
-ylabel('V (V)');
+ylabel('Signal (V)');
 legend('V_3', 'V_0');
 
 % Programing (ii)
@@ -81,13 +81,14 @@ for n=1:1:10000
     
     Vout(n) = abs(V(5));
 end
+
 subplot(1, 2, 1)
-hist(c_val, 50);
+histogram(c_val, 50);
 xlabel('C Val');
 ylabel('Number');
 
 subplot(1, 2, 2)
-hist(Vout/F(7, 1), 50);
+histogram(Vout/F(7, 1), 50);
 xlabel('V_0/V_{in}');
 ylabel('Number');
 

@@ -1,5 +1,5 @@
-function C = GetCMatrix()
-    global c L;
+function C = GetCMatrix(Cn)
+    global c L Cn;
 
     C = zeros(8, 8);
 
@@ -10,5 +10,9 @@ function C = GetCMatrix()
     C(2, 2) = +c;
 
     C(6, 6) = -L;
+    
+    if Cn
+        C(3, 3) = Cn;
+    end 
 end
 

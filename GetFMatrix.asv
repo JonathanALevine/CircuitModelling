@@ -1,0 +1,12 @@
+function F = GetFMatrix()
+    F = zeros(8, 1);
+    
+    magnitude = 0.001;
+    mu = 0;
+    sigma = 0.1;
+    In_pdf = makedist('Normal', 'mu', mu, 'sigma', sigma);
+    In = magrandom(In_pdf);
+    
+    F(3, 1) = -In;
+end
+
