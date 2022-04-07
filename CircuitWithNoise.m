@@ -16,7 +16,7 @@ c = 0.25;
 a = 100;
 Cn = 0.00001;
 
-save_plots = 1;
+save_plots = 0;
 
 G = GetGMatrix();
 C = GetCMatrix(Cn);

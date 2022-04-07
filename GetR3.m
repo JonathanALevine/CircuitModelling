@@ -30,7 +30,7 @@ traced_particles = 10;
 distribution_type = 'MB';
 epochs = 1000;
 show_all_particles = 0;
-save_plots = 0;
+save_plots = 1;
 scatter_particle = 1;
 bottleneck = 0;
 
@@ -94,5 +94,15 @@ for simulation=1:simulations
     AverageDriftCurrents(simulation) = mean(DriftCurrents);
 end
 
+figure('name', 'Average Drift Current vs. Voltage');
+plot(AverageDriftCurrents, voltages);
+xlabel('Average Drift Current (A)');
+ylabel('Voltage (V)');
+grid on;
 polyfit(AverageDriftCurrents, voltages, 1)
+
+if save_plots
+    FN2 = 'Figures/GetR3Plot';   
+    print(gcf, '-dpng', '-r600', FN2);  %Save graph in PNG
+end
 
